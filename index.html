@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nayara Ortega — Digital Marketing & Growth Strategist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --cream: #f5f0e8;
+      --ink: #1a1410;
+      --teal: #2a7a6f;
+      --teal-light: #3a9a8d;
+      --gold: #c9a84c;
+      --sand: #e8e0d0;
+      --muted: #7a7060;
+      --white: #ffffff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ─────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.5;
+    }
+
+    /* ── NAV ───────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(245,240,232,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(42,122,111,0.12);
+      transition: all 0.3s ease;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--teal); }
+
+    /* LANG TOGGLE */
+    .lang-toggle {
+      display: flex;
+      background: var(--sand);
+      border-radius: 20px;
+      padding: 3px;
+      gap: 2px;
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      padding: 5px 14px;
+      border-radius: 16px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      color: var(--muted);
+      transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .lang-btn.active {
+      background: var(--teal);
+      color: var(--white);
+    }
+
+    /* ── HERO ──────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 7rem 4rem 4rem;
+      gap: 4rem;
+      position: relative;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--sand) 0%, rgba(42,122,111,0.08) 100%);
+      z-index: 0;
+      clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    .hero-text { position: relative; z-index: 1; }
+
+    .hero-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .hero-label::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--teal);
+    }
+
+    h1.hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+
+    h2.hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--teal);
+      margin-bottom: 1.8rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-bio {
+      font-size: 1.0rem;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--teal);
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .btn-primary:hover { background: var(--teal-light); transform: translateY(-2px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1.5px solid var(--ink);
+      color: var(--ink);
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .btn-secondary:hover { background: var(--ink); color: var(--white); transform: translateY(-2px); }
+
+    .hero-contact-row {
+      display: flex;
+      gap: 1.8rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-contact-row a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .hero-contact-row a:hover { color: var(--teal); }
+
+    .hero-contact-row i { color: var(--teal); font-size: 0.9rem; }
+
+    /* HERO PHOTO */
+    .hero-photo-wrap {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-photo-frame {
+      position: relative;
+      width: min(420px, 90%);
+    }
+
+    .hero-photo-frame::before {
+      content: '';
+      position: absolute;
+      top: 20px; left: 20px;
+      right: -20px; bottom: -20px;
+      border: 2px solid var(--teal);
+      border-radius: 2px;
+      z-index: 0;
+    }
+
+    .hero-photo-frame img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 2px;
+      position: relative;
+      z-index: 1;
+      display: block;
+      background: var(--sand);
+    }
+
+    .photo-badge {
+      position: absolute;
+      bottom: -10px;
+      right: -10px;
+      background: var(--gold);
+      color: var(--ink);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.2rem;
+      z-index: 2;
+    }
+
+    /* ── KPI BAR ───────────────────────────────────────── */
+    #kpis {
+      background: var(--ink);
+      padding: 3.5rem 4rem;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2rem;
+    }
+
+    .kpi-item {
+      text-align: center;
+      position: relative;
+    }
+
+    .kpi-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0; top: 15%;
+      height: 70%;
+      width: 1px;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .kpi-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .kpi-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* ── SECTION SHARED ────────────────────────────────── */
+    section { padding: 6rem 4rem; }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      margin-bottom: 4rem;
+    }
+
+    .section-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      font-weight: 300;
+      color: rgba(42,122,111,0.12);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .section-title-wrap { display: flex; flex-direction: column; }
+
+    h2.section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ink);
+    }
+
+    .section-rule {
+      width: 60px;
+      height: 2px;
+      background: var(--teal);
+      margin-top: 0.6rem;
+    }
+
+    /* ── SKILLS ────────────────────────────────────────── */
+    #skills { background: var(--sand); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.5rem;
+    }
+
+    .skill-category {
+      background: var(--cream);
+      padding: 2rem 1.5rem;
+      border-radius: 2px;
+      border-top: 3px solid var(--teal);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(42,122,111,0.12);
+    }
+
+    .skill-cat-title {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1.5rem;
+    }
+
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .skill-item:last-child { margin-bottom: 0; }
+
+    .skill-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--ink);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .skill-name {
+      font-size: 0.85rem;
+      color: var(--ink);
+      font-weight: 400;
+    }
+
+    /* ── PROJECTS ──────────────────────────────────────── */
+    .project-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      margin-bottom: 6rem;
+    }
+
+    .project-block.reverse { direction: rtl; }
+    .project-block.reverse > * { direction: ltr; }
+
+    .project-logo {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+      object-position: left;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    .project-role {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.6rem;
+    }
+
+    h3.project-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+    }
+
+    .project-desc {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.8rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border: 1px solid rgba(42,122,111,0.35);
+      color: var(--teal);
+      border-radius: 1px;
+      font-weight: 500;
+    }
+
+    .project-kpis {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+      background: var(--sand);
+      padding: 1.5rem;
+      border-radius: 2px;
+    }
+
+    .proj-kpi { text-align: center; }
+
+    .proj-kpi-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--teal);
+      display: block;
+      line-height: 1.1;
+    }
+
+    .proj-kpi-lbl {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .proj-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--teal);
+      padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+
+    .proj-link:hover { color: var(--teal); }
+
+    /* CAROUSEL */
+    .carousel-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+      background: var(--sand);
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: rgba(26,20,16,0.7);
+      border: none;
+      border-radius: 50%;
+      color: var(--white);
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      z-index: 10;
+    }
+
+    .carousel-btn:hover { background: var(--teal); }
+    .carousel-btn.prev { left: 12px; }
+    .carousel-btn.next { right: 12px; }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      padding: 1rem;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--muted);
+      opacity: 0.4;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .dot.active { opacity: 1; background: var(--teal); width: 18px; border-radius: 3px; }
+
+    /* ── EXPERIENCE TIMELINE ───────────────────────────── */
+    #experience { background: var(--sand); }
+
+    .timeline { position: relative; padding-left: 2.5rem; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 6px; bottom: 6px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--teal), rgba(42,122,111,0.1));
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(42,122,111,0.12);
+    }
+
+    .timeline-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2.5rem;
+      top: 4px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--teal);
+      border: 3px solid var(--sand);
+      box-shadow: 0 0 0 1px var(--teal);
+    }
+
+    .timeline-date {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.4rem;
+      font-weight: 500;
+    }
+
+    .timeline-company {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    h3.timeline-role {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.8rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .timeline-desc ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 0.5rem;
+    }
+
+    .timeline-desc ul li {
+      padding-left: 1rem;
+      position: relative;
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline-desc ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-size: 0.8rem;
+    }
+
+    /* ── EDUCATION ─────────────────────────────────────── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .edu-card {
+      background: var(--cream);
+      padding: 2.5rem;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+
+    .edu-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--gold));
+    }
+
+    .edu-card:hover { transform: translateY(-4px); }
+
+    .edu-year {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+    }
+
+    h3.edu-degree {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .edu-school {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ── CONTACT ───────────────────────────────────────── */
+    #contact {
+      background: var(--ink);
+      text-align: center;
+    }
+
+    #contact h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    #contact p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.95rem;
+      margin-bottom: 3rem;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.9rem 2rem;
+      border-radius: 2px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+
+    .contact-btn.primary {
+      background: var(--teal);
+      color: var(--white);
+    }
+
+    .contact-btn.primary:hover { background: var(--teal-light); transform: translateY(-2px); }
+
+    .contact-btn.outline {
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.7);
+    }
+
+    .contact-btn.outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .footer-bottom {
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ── PROJECT SECTION HEADER ────────────────────────── */
+    #projects .section-header { margin-bottom: 5rem; }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(42,122,111,0.15);
+      margin: 4rem 0;
+    }
+
+    /* ── ANIMATIONS ────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      #hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; gap: 3rem; text-align: center; }
+      #hero::after { display: none; }
+      .hero-label { justify-content: center; }
+      .hero-bio { margin: 0 auto 2rem; }
+      .hero-actions { justify-content: center; }
+      .hero-contact-row { justify-content: center; }
+      .hero-photo-frame { margin: 0 auto; }
+      #kpis { grid-template-columns: repeat(3, 1fr); padding: 2.5rem 1.5rem; }
+      .kpi-item:nth-child(3)::after { display: none; }
+      section { padding: 4rem 1.5rem; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .project-block { grid-template-columns: 1fr; gap: 2.5rem; }
+      .project-block.reverse { direction: ltr; }
+      .edu-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      #kpis { grid-template-columns: repeat(2, 1fr); }
+      .kpi-item:nth-child(2)::after { display: none; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .project-kpis { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Nayara Ortega</a>
+  <ul class="nav-links">
+    <li><a href="#skills" data-key="nav_skills">Skills</a></li>
+    <li><a href="#projects" data-key="nav_projects">Proyectos</a></li>
+    <li><a href="#experience" data-key="nav_experience">Experiencia</a></li>
+    <li><a href="#contact" data-key="nav_contact">Contacto</a></li>
+  </ul>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text fade-up">
+    <div class="hero-label"><span data-key="hero_label">Digital Marketing & Growth Strategy</span></div>
+    <h1 class="hero-name">Nayara<br>Ortega</h1>
+    <h2 class="hero-title" data-key="hero_subtitle">Growth Strategist · Performance Marketing · Fundadora</h2>
+    <p class="hero-bio" data-key="hero_bio">
+      Especialista en escalar negocios desde cero mediante estrategias 360°. Combino visión de negocio propia, ejecución de Paid Media y análisis de datos para generar resultados medibles en ROI, conversión y crecimiento de marca.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary"><i class="fa-solid fa-arrow-down"></i> <span data-key="btn_projects">Ver proyectos</span></a>
+      <a href="https://www.linkedin.com/in/nayara-ortega" target="_blank" class="btn-secondary"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+    </div>
+    <div class="hero-contact-row">
+      <a href="mailto:nayortegaa@gmail.com"><i class="fa-solid fa-envelope"></i> nayortegaa@gmail.com</a>
+      <a href="tel:+34663993111"><i class="fa-solid fa-phone"></i> +34 663 99 31 11</a>
+    </div>
+  </div>
+  <div class="hero-photo-wrap fade-up" style="transition-delay:0.2s">
+    <div class="hero-photo-frame">
+      <img src="images/photo_nayara.jpeg" alt="Nayara Ortega" />
+      <div class="photo-badge">Madrid, Spain 🌍</div>
+    </div>
+  </div>
+</section>
+
+<!-- KPIs -->
+<div id="kpis">
+  <div class="kpi-item fade-up">
+    <span class="kpi-number">+40K</span>
+    <span class="kpi-label" data-key="kpi_views_ls">Impresiones / mes<br>Lista Séptima</span>
+  </div>
+  <div class="kpi-item fade-up" style="transition-delay:0.1s">
+    <span class="kpi-number">173K</span>
+    <span class="kpi-label" data-key="kpi_views_bf">Impresiones / mes<br>Be For Sea</span>
+  </div>
+  <div class="kpi-item fade-up" style="transition-delay:0.2s">
+    <span class="kpi-number">+2100</span>
+    <span class="kpi-label" data-key="kpi_followers">Seguidores<br>Be For Sea</span>
+  </div>
+  <div class="kpi-item fade-up" style="transition-delay:0.3s">
+    <span class="kpi-number">+10K€</span>
+    <span class="kpi-label" data-key="kpi_revenue">Facturación<br>e-commerce propio</span>
+  </div>
+  <div class="kpi-item fade-up" style="transition-delay:0.4s">
+    <span class="kpi-number">360°</span>
+    <span class="kpi-label" data-key="kpi_strategy">Estrategia<br>full-funnel</span>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header fade-up">
+    <span class="section-number">01</span>
+    <div class="section-title-wrap">
+      <h2 class="section-title" data-key="skills_title">Herramientas &<br>Competencias</h2>
+      <div class="section-rule"></div>
+    </div>
+  </div>
+  <div class="skills-grid">
+
+    <div class="skill-category fade-up">
+      <div class="skill-cat-title">Performance</div>
+      <div class="skill-item"><div class="skill-icon" style="background:#1877F2"><i class="fa-brands fa-meta"></i></div><span class="skill-name">Meta Ads</span></div>
+      <div class="skill-item"><div class="skill-icon" style="background:#4285F4"><i class="fa-brands fa-google"></i></div><span class="skill-name">Google Ads</span></div>
+      <div class="skill-item"><div class="skill-icon" style="background:#E60023"><i class="fa-brands fa-pinterest"></i></div><span class="skill-name">Pinterest Ads</span></div>
+      <div class="skill-item"><div class="skill-icon" style="background:#010101"><i class="fa-brands fa-tiktok"></i></div><span class="skill-name">TikTok Ads</span></div>
+    </div>
+
+    <div class="skill-category fade-up" style="transition-delay:0.1s">
+      <div class="skill-cat-title">Data & E-com</div>
+      <div class="skill-item"><div class="skill-icon" style="background:#96BF48"><i class="fa-solid fa-store"></i></div><span class="skill-name">Shopify</span></div>
+      <div class="skill-item"><div class="skill-icon" style="background:#E37400"><i class="fa-solid fa-chart-line"></i></div><span class="skill-name">GA4</span></div>
+      <div class="skill-item"><div class="skill-icon" style="background:#4285F4"><i class="fa-solid fa-chart-bar"></i></div><span class="skill-name">Looker Studio</span></div>
+      <div class="skill-item"><div class="skill-icon" style="background:#1d1d1d"><i class="fa-solid fa-tag"></i></div><span class="skill-name">GTM</span></div>
+    </div>
+
+    <div class="skill-category fade-up" style="transition-delay:0.2s">
+      <div class="skill-cat-title">Automation</div>
+      <div class="skill-item"><div class="skill-icon" style="background:#1CB0F6"><i class="fa-solid fa-envelope-open-text"></i></div><span class="skill-name">Omnisend</span></div>
+      <div class="skill-item"><div class="skill-icon" style="background:#0092ff"><i class="fa-solid fa-paper-plane"></i></div><span class="skill-name">Brevo</span></div>
+      <div class="skill-item"><div class="skill-icon" style="background:#c47a2a"><i class="fa-solid fa-robot"></i></div><span class="skill-name">Claude AI</span></div>
+      <div class="skill-item"><div class="skill-icon" style="background:#6772e5"><i class="fa-solid fa-bolt"></i></div><span class="skill-name">Email Marketing</span></div>
+    </div>
+
+    <div class="skill-category fade-up" style="transition-delay:0.3s">
+      <div class="skill-cat-title">Management</div>
+      <div class="skill-item"><div class="skill-icon" style="background:#000000"><i class="fa-solid fa-square"></i></div><span class="skill-name">Notion</span></div>
+      <div class="skill-item"><div class="skill-icon" style="background:#0052CC"><i class="fa-solid fa-list-check"></i></div><span class="skill-name">Trello</span></div>
+      <div class="skill-item"><div class="skill-icon" style="background:#217346"><i class="fa-solid fa-table"></i></div><span class="skill-name">Excel</span></div>
+      <div class="skill-item"><div class="skill-icon" style="background:#460099"><i class="fa-brands fa-wordpress"></i></div><span class="skill-name">WordPress</span></div>
+    </div>
+
+    <div class="skill-category fade-up" style="transition-delay:0.4s">
+      <div class="skill-cat-title">Creativity</div>
+      <div class="skill-item"><div class="skill-icon" style="background:#FF0000"><i class="fa-brands fa-adobe"></i></div><span class="skill-name">Adobe Suite</span></div>
+      <div class="skill-item"><div class="skill-icon" style="background:#7950F2"><i class="fa-solid fa-palette"></i></div><span class="skill-name">Canva</span></div>
+      <div class="skill-item"><div class="skill-icon" style="background:#010101"><i class="fa-brands fa-tiktok"></i></div><span class="skill-name">CapCut</span></div>
+      <div class="skill-item"><div class="skill-icon" style="background:#E1306C"><i class="fa-brands fa-instagram"></i></div><span class="skill-name">Social Media</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header fade-up">
+    <span class="section-number">02</span>
+    <div class="section-title-wrap">
+      <h2 class="section-title" data-key="projects_title">Proyectos<br>Destacados</h2>
+      <div class="section-rule"></div>
+    </div>
+  </div>
+
+  <!-- LISTA SÉPTIMA -->
+  <div class="project-block fade-up">
+    <div>
+      <img src="images/listaseptima_logo.svg" alt="Lista Séptima" class="project-logo" onerror="this.style.display='none'">
+      <div class="project-role" data-key="ls_role">Marketing Project Manager · Mayo 2024 – Actualidad</div>
+      <h3 class="project-name" data-key="ls_name">Lista Séptima<br><em style="font-size:0.65em;color:var(--muted)">Plataforma de alquiler náutico privado</em></h3>
+      <p class="project-desc" data-key="ls_desc">
+        Lideré la dirección de marketing de una startup náutica B2C desde su lanzamiento, definiendo el posicionamiento de marca y diseñando el go-to-market completo. Coordiné los equipos de UX y desarrollo para garantizar que cada decisión técnica estuviera alineada con la estrategia de crecimiento. Ejecuté campañas de captación en Meta Ads y TikTok Ads, construí el funnel de conversión end-to-end y diseñé los flujos de nurturing para convertir leads en clientes recurrentes.
+      </p>
+      <div class="project-kpis">
+        <div class="proj-kpi">
+          <span class="proj-kpi-val">40K+</span>
+          <span class="proj-kpi-lbl" data-key="ls_kpi1">Impresiones/mes</span>
+        </div>
+        <div class="proj-kpi">
+          <span class="proj-kpi-val">360°</span>
+          <span class="proj-kpi-lbl" data-key="ls_kpi2">Estrategia integral</span>
+        </div>
+        <div class="proj-kpi">
+          <span class="proj-kpi-val">3+</span>
+          <span class="proj-kpi-lbl" data-key="ls_kpi3">Equipos coordinados</span>
+        </div>
+      </div>
+      <div class="project-tags">
+        <span class="tag">Meta Ads</span>
+        <span class="tag">TikTok Ads</span>
+        <span class="tag">Funnels</span>
+        <span class="tag">SEO</span>
+        <span class="tag">Email Nurturing</span>
+        <span class="tag">Lanzamiento</span>
+        <span class="tag">UX Coordination</span>
+      </div>
+      <div class="project-links">
+        <a href="https://listaseptima.com" target="_blank" class="proj-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> listaseptima.com</a>
+        <a href="https://www.instagram.com/listaseptima/" target="_blank" class="proj-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="carousel-wrap" id="carousel-ls">
+        <div class="carousel-track" id="track-ls">
+          <div class="carousel-slide"><img src="images/listaseptima_home.png" alt="Lista Séptima Home"></div>
+          <div class="carousel-slide"><img src="images/listaseptima_fullhome.jpg" alt="Lista Séptima Full Home"></div>
+          <div class="carousel-slide"><img src="images/listaseptima_search.jpg" alt="Lista Séptima Search"></div>
+          <div class="carousel-slide"><img src="images/listaseptima_boat.jpg" alt="Lista Séptima Boat"></div>
+          <div class="carousel-slide"><img src="images/listaseptima_instagram.png" alt="Lista Séptima Instagram"></div>
+        </div>
+        <button class="carousel-btn prev" onclick="slide('ls', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="carousel-btn next" onclick="slide('ls', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+        <div class="carousel-dots" id="dots-ls">
+          <button class="dot active" onclick="goTo('ls',0)"></button>
+          <button class="dot" onclick="goTo('ls',1)"></button>
+          <button class="dot" onclick="goTo('ls',2)"></button>
+          <button class="dot" onclick="goTo('ls',3)"></button>
+          <button class="dot" onclick="goTo('ls',4)"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BE FOR SEA -->
+  <div class="project-block reverse fade-up">
+    <div>
+      <img src="images/beforsea_logo.png" alt="Be For Sea" class="project-logo" onerror="this.style.display='none'">
+      <div class="project-role" data-key="bf_role">Fundadora & Head of Marketing · Diciembre 2024 – Actualidad</div>
+      <h3 class="project-name" data-key="bf_name">Be For Sea<br><em style="font-size:0.65em;color:var(--muted)">Swimwear brand · Designed in Spain</em></h3>
+      <p class="project-desc" data-key="bf_desc">
+        Fundé y escalo Be For Sea desde cero: diseñé la identidad de marca, construí el e-commerce en Shopify con arquitectura SEO-ready y ejecuté la estrategia de marketing omnicanal al completo. Dirijo de forma directa las campañas de Paid Media en Meta Ads y TikTok Ads, optimizando los conjuntos de anuncios, los creativos y el presupuesto para maximizar el ROAS. La estrategia cubre todo el funnel: captación de tráfico frío, retargeting, flujos de email automatizados (bienvenida, recuperación de carrito, post-compra) y gestión de comunidad en Instagram. Hemos alcanzado +10K€ de facturación y 173K impresiones mensuales en Instagram en menos de seis meses de vida.
+      </p>
+      <div class="project-kpis">
+        <div class="proj-kpi">
+          <span class="proj-kpi-val">173K</span>
+          <span class="proj-kpi-lbl" data-key="bf_kpi1">Impresiones/mes IG</span>
+        </div>
+        <div class="proj-kpi">
+          <span class="proj-kpi-val">+10K€</span>
+          <span class="proj-kpi-lbl" data-key="bf_kpi2">Facturación</span>
+        </div>
+        <div class="proj-kpi">
+          <span class="proj-kpi-val">2.091</span>
+          <span class="proj-kpi-lbl" data-key="bf_kpi3">Seguidores</span>
+        </div>
+      </div>
+      <div class="project-tags">
+        <span class="tag">Shopify</span>
+        <span class="tag">Meta Ads</span>
+        <span class="tag">TikTok Ads</span>
+        <span class="tag">SEO</span>
+        <span class="tag">Email Marketing</span>
+        <span class="tag">Omnicanal</span>
+        <span class="tag">E-commerce</span>
+        <span class="tag">Fundadora</span>
+      </div>
+      <div class="project-links">
+        <a href="https://beforsea.com" target="_blank" class="proj-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> beforsea.com</a>
+        <a href="https://www.instagram.com/be4sea/" target="_blank" class="proj-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="carousel-wrap" id="carousel-bf">
+        <div class="carousel-track" id="track-bf">
+          <div class="carousel-slide"><img src="images/beforsea_home.png" alt="Be For Sea Home"></div>
+          <div class="carousel-slide"><img src="images/beforsea_product.png" alt="Be For Sea Product"></div>
+          <div class="carousel-slide"><img src="images/beforsea_all.png" alt="Be For Sea Collection"></div>
+          <div class="carousel-slide"><img src="images/beforsea_instagram.png" alt="Be For Sea Instagram"></div>
+        </div>
+        <button class="carousel-btn prev" onclick="slide('bf', -1)"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="carousel-btn next" onclick="slide('bf', 1)"><i class="fa-solid fa-chevron-right"></i></button>
+        <div class="carousel-dots" id="dots-bf">
+          <button class="dot active" onclick="goTo('bf',0)"></button>
+          <button class="dot" onclick="goTo('bf',1)"></button>
+          <button class="dot" onclick="goTo('bf',2)"></button>
+          <button class="dot" onclick="goTo('bf',3)"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header fade-up">
+    <span class="section-number">03</span>
+    <div class="section-title-wrap">
+      <h2 class="section-title" data-key="exp_title">Trayectoria<br>Profesional</h2>
+      <div class="section-rule"></div>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item fade-up">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date" data-key="e1_date">Mayo 2024 — Actualidad</div>
+      <div class="timeline-company">Lista Séptima</div>
+      <h3 class="timeline-role" data-key="e1_role">Marketing Project Manager</h3>
+      <div class="timeline-desc">
+        <ul>
+          <li data-key="e1_b1">Lideré la estrategia de lanzamiento de la plataforma digital definiendo el posicionamiento y el plan de marketing desde cero.</li>
+          <li data-key="e1_b2">Diseñé y ejecuté el funnel de conversión completo: captación de leads mediante Meta/TikTok Ads, nurturing automatizado y optimización de la tasa de conversión.</li>
+          <li data-key="e1_b3">Coordiné equipos de UX, Dev y Marketing asegurando alineación entre la estrategia de negocio y la implementación técnica.</li>
+          <li data-key="e1_b4">Analicé el rendimiento de campañas mediante GA4 y Looker Studio, trasladando los datos a decisiones accionables.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-up">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date" data-key="e2_date">Diciembre 2024 — Actualidad</div>
+      <div class="timeline-company">Be For Sea</div>
+      <h3 class="timeline-role" data-key="e2_role">Fundadora & Head of Marketing</h3>
+      <div class="timeline-desc">
+        <ul>
+          <li data-key="e2_b1">Creé y escalé un e-commerce en Shopify desde cero, gestionando todo el ecosistema digital (tienda, SEO, email flows, paid media, social).</li>
+          <li data-key="e2_b2">Diseñé y ejecuté la estrategia de marketing 360°: Paid Media, SEO on-page, email marketing y gestión de redes sociales.</li>
+          <li data-key="e2_b3">Escalé la marca desde el concepto hasta ventas recurrentes, optimizando el funnel de conversión y la rentabilidad (ROAS).</li>
+          <li data-key="e2_b4">Gestión directa de creativos publicitarios, segmentación de audiencias y presupuesto de campañas en Meta y TikTok.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-up">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date" data-key="e3_date">Febrero 2024 — Septiembre 2025</div>
+      <div class="timeline-company">Neuronic</div>
+      <h3 class="timeline-role" data-key="e3_role">Especialista en Marketing Digital</h3>
+      <div class="timeline-desc">
+        <ul>
+          <li data-key="e3_b1">Diseñé estrategias digitales para clientes del sector turístico orientadas a incrementar tráfico orgánico, generación de leads y tasas de conversión.</li>
+          <li data-key="e3_b2">Ejecuté planes de SEO y contenidos, supervisando el rendimiento mensual mediante informes de datos y KPIs definidos.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-up">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date" data-key="e4_date">Abril 2022 — Diciembre 2023</div>
+      <div class="timeline-company">Insight — Media Consulting</div>
+      <h3 class="timeline-role" data-key="e4_role">Account Manager — Influencer Marketing</h3>
+      <div class="timeline-desc">
+        <ul>
+          <li data-key="e4_b1">Gestioné campañas con influencers de principio a fin: briefing, negociación de presupuestos y seguimiento con marcas nacionales e internacionales.</li>
+          <li data-key="e4_b2">Analicé resultados y elaboré informes de ROI, alcance y engagement para optimizar las inversiones de los clientes.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-header fade-up">
+    <span class="section-number">04</span>
+    <div class="section-title-wrap">
+      <h2 class="section-title" data-key="edu_title">Formación<br>Académica</h2>
+      <div class="section-rule"></div>
+    </div>
+  </div>
+
+  <div class="edu-grid">
+    <div class="edu-card fade-up">
+      <div class="edu-year">2023 — 2024</div>
+      <h3 class="edu-degree" data-key="edu1_deg">Máster en Marketing y Comunicación Digital</h3>
+      <div class="edu-school">IMF Smart Education · Madrid</div>
+    </div>
+    <div class="edu-card fade-up" style="transition-delay:0.1s">
+      <div class="edu-year">2018 — 2023</div>
+      <h3 class="edu-degree" data-key="edu2_deg">Doble Grado en ADE y Marketing</h3>
+      <div class="edu-school">Universidad Rey Juan Carlos · Madrid</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="fade-up" data-key="contact_title">Hablemos.</h2>
+  <p class="fade-up" data-key="contact_sub">¿Tienes un proyecto o una oportunidad? Estaré encantada de contarte cómo puedo ayudarte a crecer.</p>
+  <div class="contact-links fade-up">
+    <a href="mailto:nayortegaa@gmail.com" class="contact-btn primary"><i class="fa-solid fa-envelope"></i> nayortegaa@gmail.com</a>
+    <a href="tel:+34663993111" class="contact-btn outline"><i class="fa-solid fa-phone"></i> +34 663 99 31 11</a>
+    <a href="https://www.linkedin.com/in/nayara-ortega" target="_blank" class="contact-btn outline"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+    <a href="https://www.instagram.com/be4sea/" target="_blank" class="contact-btn outline"><i class="fa-brands fa-instagram"></i> @be4sea</a>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Nayara Ortega · Digital Marketing & Growth Strategist · Madrid, Spain</p>
+  </div>
+</section>
+
+<script>
+  /* ── CAROUSEL ─────────────────────────────────────────── */
+  const carousels = {};
+
+  function initCarousel(id, total) {
+    carousels[id] = { current: 0, total };
+  }
+
+  function updateCarousel(id) {
+    const { current } = carousels[id];
+    document.getElementById('track-' + id).style.transform = `translateX(-${current * 100}%)`;
+    document.querySelectorAll('#dots-' + id + ' .dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  function slide(id, dir) {
+    const c = carousels[id];
+    c.current = (c.current + dir + c.total) % c.total;
+    updateCarousel(id);
+  }
+
+  function goTo(id, i) {
+    carousels[id].current = i;
+    updateCarousel(id);
+  }
+
+  initCarousel('ls', 5);
+  initCarousel('bf', 4);
+
+  /* ── SCROLL ANIMATIONS ────────────────────────────────── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  /* ── LANGUAGE TOGGLE ──────────────────────────────────── */
+  const translations = {
+    es: {
+      nav_skills: 'Skills',
+      nav_projects: 'Proyectos',
+      nav_experience: 'Experiencia',
+      nav_contact: 'Contacto',
+      hero_label: 'Digital Marketing & Growth Strategy',
+      hero_subtitle: 'Growth Strategist · Performance Marketing · Fundadora',
+      hero_bio: 'Especialista en escalar negocios desde cero mediante estrategias 360°. Combino visión de negocio propia, ejecución de Paid Media y análisis de datos para generar resultados medibles en ROI, conversión y crecimiento de marca.',
+      btn_projects: 'Ver proyectos',
+      kpi_views_ls: 'Impresiones / mes\nLista Séptima',
+      kpi_views_bf: 'Impresiones / mes\nBe For Sea',
+      kpi_followers: 'Seguidores\nBe For Sea',
+      kpi_revenue: 'Facturación\ne-commerce propio',
+      kpi_strategy: 'Estrategia\nfull-funnel',
+      skills_title: 'Herramientas &\nCompetencias',
+      projects_title: 'Proyectos\nDestacados',
+      ls_role: 'Marketing Project Manager · Mayo 2024 – Actualidad',
+      ls_name: 'Lista Séptima',
+      ls_desc: 'Lideré la dirección de marketing de una startup náutica B2C desde su lanzamiento, definiendo el posicionamiento de marca y diseñando el go-to-market completo. Coordiné los equipos de UX y desarrollo para garantizar que cada decisión técnica estuviera alineada con la estrategia de crecimiento. Ejecuté campañas de captación en Meta Ads y TikTok Ads, construí el funnel de conversión end-to-end y diseñé los flujos de nurturing para convertir leads en clientes recurrentes.',
+      ls_kpi1: 'Impresiones/mes',
+      ls_kpi2: 'Estrategia integral',
+      ls_kpi3: 'Equipos coordinados',
+      bf_role: 'Fundadora & Head of Marketing · Diciembre 2024 – Actualidad',
+      bf_name: 'Be For Sea',
+      bf_desc: 'Fundé y escalo Be For Sea desde cero: diseñé la identidad de marca, construí el e-commerce en Shopify con arquitectura SEO-ready y ejecuté la estrategia de marketing omnicanal al completo. Dirijo de forma directa las campañas de Paid Media en Meta Ads y TikTok Ads, optimizando conjuntos de anuncios, creativos y presupuesto para maximizar el ROAS. La estrategia cubre todo el funnel: captación de tráfico frío, retargeting, flujos de email automatizados y gestión de comunidad en Instagram.',
+      bf_kpi1: 'Impresiones/mes IG',
+      bf_kpi2: 'Facturación',
+      bf_kpi3: 'Seguidores',
+      exp_title: 'Trayectoria\nProfesional',
+      e1_date: 'Mayo 2024 — Actualidad',
+      e1_role: 'Marketing Project Manager',
+      e1_b1: 'Lideré la estrategia de lanzamiento definiendo el posicionamiento y el plan de marketing desde cero.',
+      e1_b2: 'Diseñé y ejecuté el funnel de conversión completo: captación de leads mediante Meta/TikTok Ads y nurturing automatizado.',
+      e1_b3: 'Coordiné equipos de UX, Dev y Marketing asegurando alineación entre estrategia de negocio e implementación técnica.',
+      e1_b4: 'Analicé el rendimiento de campañas con GA4 y Looker Studio, trasladando los datos a decisiones accionables.',
+      e2_date: 'Diciembre 2024 — Actualidad',
+      e2_role: 'Fundadora & Head of Marketing',
+      e2_b1: 'Creé y escalé un e-commerce en Shopify desde cero, gestionando todo el ecosistema digital.',
+      e2_b2: 'Diseñé y ejecuté la estrategia de marketing 360°: Paid Media, SEO on-page, email marketing y social media.',
+      e2_b3: 'Escalé la marca desde el concepto hasta ventas recurrentes, optimizando el funnel de conversión y el ROAS.',
+      e2_b4: 'Gestión directa de creativos publicitarios, segmentación de audiencias y presupuesto en Meta y TikTok.',
+      e3_date: 'Febrero 2024 — Septiembre 2025',
+      e3_role: 'Especialista en Marketing Digital',
+      e3_b1: 'Diseñé estrategias digitales para clientes del sector turístico orientadas a tráfico, leads y conversión.',
+      e3_b2: 'Ejecuté planes de SEO y contenidos supervisando el rendimiento mensual con KPIs definidos.',
+      e4_date: 'Abril 2022 — Diciembre 2023',
+      e4_role: 'Account Manager — Influencer Marketing',
+      e4_b1: 'Gestioné campañas con influencers de principio a fin, negociando presupuestos con marcas nacionales e internacionales.',
+      e4_b2: 'Elaboré informes de ROI, alcance y engagement para optimizar las inversiones de los clientes.',
+      edu_title: 'Formación\nAcadémica',
+      edu1_deg: 'Máster en Marketing y Comunicación Digital',
+      edu2_deg: 'Doble Grado en ADE y Marketing',
+      contact_title: 'Hablemos.',
+      contact_sub: '¿Tienes un proyecto o una oportunidad? Estaré encantada de contarte cómo puedo ayudarte a crecer.',
+    },
+    en: {
+      nav_skills: 'Skills',
+      nav_projects: 'Projects',
+      nav_experience: 'Experience',
+      nav_contact: 'Contact',
+      hero_label: 'Digital Marketing & Growth Strategy',
+      hero_subtitle: 'Growth Strategist · Performance Marketing · Founder',
+      hero_bio: 'Specialist in scaling businesses from scratch through 360° strategies. I combine business vision, Paid Media execution and data analysis to generate measurable results in ROI, conversion and brand growth.',
+      btn_projects: 'View projects',
+      kpi_views_ls: 'Impressions / month\nLista Séptima',
+      kpi_views_bf: 'Impressions / month\nBe For Sea',
+      kpi_followers: 'Followers\nBe For Sea',
+      kpi_revenue: 'Revenue\nown e-commerce',
+      kpi_strategy: 'Strategy\nfull-funnel',
+      skills_title: 'Tools &\nExpertise',
+      projects_title: 'Featured\nProjects',
+      ls_role: 'Marketing Project Manager · May 2024 – Present',
+      ls_name: 'Lista Séptima',
+      ls_desc: 'I led the marketing direction of a B2C nautical startup from launch, defining brand positioning and designing the full go-to-market strategy. I coordinated UX and development teams to ensure every technical decision aligned with the growth strategy. I ran acquisition campaigns on Meta Ads and TikTok Ads, built the end-to-end conversion funnel and designed nurturing flows to convert leads into recurring customers.',
+      ls_kpi1: 'Impressions/month',
+      ls_kpi2: 'Integrated strategy',
+      ls_kpi3: 'Teams coordinated',
+      bf_role: 'Founder & Head of Marketing · December 2024 – Present',
+      bf_name: 'Be For Sea',
+      bf_desc: 'I founded and scaled Be For Sea from scratch: designed the brand identity, built the Shopify e-commerce with an SEO-ready architecture and executed the full omnichannel marketing strategy. I directly manage Paid Media campaigns on Meta Ads and TikTok Ads, optimising ad sets, creatives and budget to maximise ROAS. The strategy covers the entire funnel: cold traffic acquisition, retargeting, automated email flows and community management on Instagram.',
+      bf_kpi1: 'Impressions/month IG',
+      bf_kpi2: 'Revenue',
+      bf_kpi3: 'Followers',
+      exp_title: 'Professional\nExperience',
+      e1_date: 'May 2024 — Present',
+      e1_role: 'Marketing Project Manager',
+      e1_b1: 'Led the launch strategy defining positioning and the marketing plan from scratch.',
+      e1_b2: 'Designed and executed the full conversion funnel: lead acquisition via Meta/TikTok Ads and automated nurturing.',
+      e1_b3: 'Coordinated UX, Dev and Marketing teams ensuring alignment between business strategy and technical implementation.',
+      e1_b4: 'Analysed campaign performance with GA4 and Looker Studio, translating data into actionable decisions.',
+      e2_date: 'December 2024 — Present',
+      e2_role: 'Founder & Head of Marketing',
+      e2_b1: 'Created and scaled a Shopify e-commerce from scratch, managing the entire digital ecosystem.',
+      e2_b2: 'Designed and executed the 360° marketing strategy: Paid Media, on-page SEO, email marketing and social media.',
+      e2_b3: 'Scaled the brand from concept to recurring sales, optimising the conversion funnel and ROAS.',
+      e2_b4: 'Direct management of ad creatives, audience segmentation and campaign budget on Meta and TikTok.',
+      e3_date: 'February 2024 — September 2025',
+      e3_role: 'Digital Marketing Specialist',
+      e3_b1: 'Designed digital strategies for tourism sector clients focused on traffic, leads and conversion.',
+      e3_b2: 'Executed SEO and content plans monitoring monthly performance against defined KPIs.',
+      e4_date: 'April 2022 — December 2023',
+      e4_role: 'Account Manager — Influencer Marketing',
+      e4_b1: 'Managed influencer campaigns end-to-end, negotiating budgets with national and international brands.',
+      e4_b2: 'Produced ROI, reach and engagement reports to optimise client investments.',
+      edu_title: 'Academic\nBackground',
+      edu1_deg: 'Master\'s in Digital Marketing & Communication',
+      edu2_deg: 'Double Degree in Business Administration & Marketing',
+      contact_title: "Let's talk.",
+      contact_sub: 'Have a project or opportunity? I\'d love to tell you how I can help you grow.',
+    }
+  };
+
+  let currentLang = 'es';
+
+  function setLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === lang));
+    document.querySelectorAll('[data-key]').forEach(el => {
+      const key = el.getAttribute('data-key');
+      if (translations[lang][key]) el.textContent = translations[lang][key];
+    });
+  }
+</script>
+</body>
+</html>
